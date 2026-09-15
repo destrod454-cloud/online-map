@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COOU Campus Navigation - Sign Up</title>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+
+<body>
+
+    <main class="signup-page">
+
+        <!-- LEFT VISUAL PANEL -->
+        <section class="visual-panel">
+
+            <div class="visual-overlay"></div>
+
+            <div class="visual-content">
+
+                <div class="brand">
+                    <div class="brand-logo">
+                        <img src="/image/logo.jpg" alt="COOU School Logo">
+                    </div>
+
+                    <div>
+                        <h2>COOU</h2>
+                        <span>Campus Navigation</span>
+                    </div>
+                </div>
+
+                <div class="hero-content">
+
+                    <span class="eyebrow">STUDENT REGISTRATION</span>
+
+                    <h1>
+                        Making movement
+                        <span>easier.</span>
+                    </h1>
+
+                    <p>
+                        Create your student account and gain full access to the site.
+                    </p>
+
+                    <div class="features">
+
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Personalized campus access</span>
+                        </div>
+
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Find locations easily</span>
+                        </div>
+
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Get clear directions</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="visual-footer">
+                    <span>Chukwuemeka Odumegwu Ojukwu University</span>
+                    <span>Uli Campus</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SIGNUP PANEL -->
+        <section class="signup-panel">
+
+            <div class="signup-wrapper">
+
+                <div class="signup-header">
+
+                    <span class="welcome-label">CREATE YOUR ACCOUNT</span>
+
+                    <h1>signup</h1>
+
+                    <p>
+                        Register as a student to gain full access.
+                    </p>
+
+                </div>
+
+
+                <form class="signup-form" id="signupForm">
+
+                    <!-- SCHOOL EMAIL -->
+                    <div class="input-group">
+
+                        <label for="school-email">
+                            School Email
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">@</span>
+
+                            <input
+                                type="email"
+                                id="school-email"
+                                placeholder="Enter your COOU email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MATRIC NUMBER -->
+                    <div class="input-group">
+
+                        <label for="student-id">
+                            Matric No. / Student ID
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">ID</span>
+
+                            <input
+                                type="text"
+                                id="student-id"
+                                placeholder="Enter your matric number or ID"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="input-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">••</span>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <div class="password-strength">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+                    <div class="input-group">
+
+                        <label for="confirm-password">
+                            Confirm Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">✓</span>
+
+                            <input
+                                type="password"
+                                id="confirm-password"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+                    <label class="terms">
+
+                        <input type="checkbox" id="terms" required>
+
+                        <span>
+                            I agree to the
+                            <a href="#">terms and conditions</a>
+                            of the COOU Campus Navigation System.
+                        </span>
+
+                    </label>
+
+
+                    <!-- SIGNUP BUTTON -->
+                    <button
+                        type="submit"
+                        class="signup-btn"
+                        id="signupButton"
+                    >
+
+                        <span>Create Student Account</span>
+
+                        <span class="button-arrow">→</span>
+
+                    </button>
+
+                </form>
+
+
+                <div class="login-link">
+
+                    <span>Already have an account?</span>
+
+                    <a href="/HTML/index.html">
+                        Sign In
+                    </a>
+
+                </div>
+
+
+                <footer class="signup-footer">
+
+                    <p>
+                        © 2026 COOU Campus Navigation System
+                    </p>
+
+                    <span>
+                        Chukwuemeka Odumegwu Ojukwu University
+                    </span>
+
+                </footer>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+
+        <div class="loader-content">
+
+            <div class="loader-logo">
+                <img src="/image/logo.jpg" alt="COOU School Logo">
+            </div>
+
+            <div class="loader-spinner"></div>
+
+            <h3>COOU Campus Navigation</h3>
+
+            <p>Creating your student experience...</p>
+
+        </div>
+
+    </div>
+
+
+    <script src="/javascript/signup.js"></script>
+
+</body>
+</html>

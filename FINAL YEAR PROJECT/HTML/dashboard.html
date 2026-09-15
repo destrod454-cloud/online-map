@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>COOU Navigation System</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="school-brand">
+
+            <img
+                src="/image/logo.jpg"
+                alt="COOU Logo"
+            >
+
+            <div>
+                <h2 id="sidebarRole">Student</h2>
+                <span>My Dashboard</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="#" class="menu-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="map.html" class="menu-item">
+                <i class="fa-regular fa-map"></i>
+                <span>Map</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Locations</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-regular fa-compass"></i>
+                <span>Directions</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Faculties</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-sitemap"></i>
+                <span>Departments</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span>Classrooms</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-regular fa-bookmark"></i>
+                <span>Saved Places</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-route"></i>
+                <span>Recent Routes</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-regular fa-circle-question"></i>
+                <span>Help & Support</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <i class="fa-solid fa-location-crosshairs"></i>
+
+            <div>
+                <strong>Navigate with ease</strong>
+
+                <p>
+                    Find any place on campus quickly
+                    and get directions.
+                </p>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <button
+                class="hamburger"
+                id="hamburger"
+                type="button"
+                aria-label="Open navigation menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <div class="top-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search places, buildings, departments..."
+                    id="dashboardSearch"
+                >
+
+                <span>Ctrl + K</span>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                    class="notification"
+                    type="button"
+                >
+                    <i class="fa-regular fa-bell"></i>
+                    <b>3</b>
+                </button>
+
+
+                <!-- PROFILE -->
+
+                <div class="profile-wrapper">
+
+                    <button
+                        class="profile"
+                        id="profileToggle"
+                        type="button"
+                    >
+
+                        <div class="profile-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div class="profile-details">
+
+                            <strong id="profileName">
+                                User
+                            </strong>
+
+                            <small id="profileRole">
+                                Student
+                            </small>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+                    </button>
+
+
+                    <div
+                        class="profile-dropdown"
+                        id="profileDropdown"
+                    >
+
+                        <div class="dropdown-user">
+
+                            <div class="dropdown-avatar">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                            <div>
+                                <strong id="dropdownName">
+                                    User
+                                </strong>
+
+                                <small id="dropdownRole">
+                                    Student
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="dropdown-line"></div>
+
+
+                        <a href="#">
+                            <i class="fa-regular fa-user"></i>
+                            My Profile
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-regular fa-bookmark"></i>
+                            Saved Places
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-solid fa-gear"></i>
+                            Settings
+                        </a>
+
+                        <button
+                            type="button"
+                            id="logoutButton"
+                            class="logout-option"
+                        >
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Log Out
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= MOBILE MENU ================= -->
+
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <div class="mobile-menu-header">
+
+                <div class="mobile-brand">
+
+                    <img
+                        src="/image/logo.jpg"
+                        alt="COOU Logo"
+                    >
+
+                    <div>
+                        <strong>COOU Navigation</strong>
+                        <small>Campus Navigation System</small>
+                    </div>
+
+                </div>
+
+                <button
+                    class="close-menu"
+                    id="closeMenu"
+                    type="button"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <nav class="mobile-nav">
+
+                <a href="#" class="mobile-menu-item active">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="map.html" class="mobile-menu-item">
+                    <i class="fa-regular fa-map"></i>
+                    <span>Map</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Locations</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-regular fa-compass"></i>
+                    <span>Directions</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>Faculties</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <span>Departments</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>Classrooms</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-regular fa-bookmark"></i>
+                    <span>Saved Places</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-solid fa-route"></i>
+                    <span>Recent Routes</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span>Help & Support</span>
+                </a>
+
+                <a href="#" class="mobile-menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div
+            class="menu-overlay"
+            id="menuOverlay"
+        ></div>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section class="dashboard">
+
+
+            <!-- ================= HERO ================= -->
+
+            <section class="hero">
+
+                <div class="hero-overlay"></div>
+
+                <div class="hero-content">
+
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-location-dot"></i>
+                        COOU Uli Campus
+                    </div>
+
+                    <h1>
+                        Navigate campus
+                        <span>with confidence.</span>
+                    </h1>
+
+                    <p>
+                        Find buildings, faculties, classrooms and
+                        important locations without getting lost.
+                    </p>
+
+
+                    <a
+                        href="map.html"
+                        class="hero-map-button"
+                    >
+                        <span>Explore Campus Map</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= WELCOME ================= -->
+
+            <section class="welcome-section">
+
+                <div>
+
+                    <span class="eyebrow">
+                        CAMPUS NAVIGATION
+                    </span>
+
+                    <h2>
+                        Hello,
+                        <span id="welcomeName">User</span>.
+                    </h2>
+
+                    <p>
+                        Where would you like to go today?
+                    </p>
+
+                </div>
+
+
+                <div class="status-pill">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        Campus navigation online
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= QUICK SEARCH ================= -->
+
+            <section class="destination-search card">
+
+                <div class="destination-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+
+                <div class="destination-content">
+
+                    <span>FIND YOUR DESTINATION</span>
+
+                    <strong>
+                        Where do you want to go?
+                    </strong>
+
+                </div>
+
+                <div class="destination-input">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Search a campus location..."
+                    >
+
+                </div>
+
+                <a
+                    href="map.html"
+                    class="route-button"
+                >
+                    Find Route
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </section>
+
+
+            <!-- ================= MAIN GRID ================= -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- ================= LEFT COLUMN ================= -->
+
+                <div class="left-column">
+
+
+                    <!-- ================= LIVE CAMPUS MAP ================= -->
+
+                    <section class="card map-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="section-label">
+                                    LIVE MAP
+                                </span>
+
+                                <h2>
+                                    Campus Map
+                                </h2>
+
+                            </div>
+
+
+                            <a
+                                href="map.html"
+                                class="view-map-button"
+                            >
+                                View Map
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+
+                        </div>
+
+
+                        <div class="mini-map-wrapper">
+
+                            <div
+                                id="campusMiniMap"
+                                class="mini-map"
+                            ></div>
+
+
+                            <div class="map-live-badge">
+
+                                <span></span>
+
+                                Live Campus Map
+
+                            </div>
+
+
+                            <div class="map-location-card">
+
+                                <div class="location-card-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        COOU Uli Campus
+                                    </strong>
+
+                                    <small>
+                                        Interactive campus map
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="map-footer">
+
+                            <div class="map-stat">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                <div>
+                                    <strong>Campus Locations</strong>
+                                    <span>Explore important places</span>
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="map.html"
+                                class="full-map-link"
+                            >
+                                Open full map
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================= POPULAR PLACES ================= -->
+
+                    <section class="card popular-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="section-label">
+                                    EXPLORE
+                                </span>
+
+                                <h2>
+                                    Popular Places
+                                </h2>
+
+                            </div>
+
+                            <button
+                                class="arrow-button"
+                                type="button"
+                            >
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="places">
+
+
+                            <a href="map.html" class="place">
+
+                                <div class="place-image">
+                                    <img
+                                        src="/image/library.jpg"
+                                        alt="Library"
+                                    >
+                                </div>
+
+                                <div class="place-info">
+
+                                    <strong>Library</strong>
+
+                                    <span>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        Academic
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-arrow-up-right-from-square place-arrow"></i>
+
+                            </a>
+
+
+                            <a href="map.html" class="place">
+
+                                <div class="place-image">
+                                    <img
+                                        src="/image/library.jpg"
+                                        alt="Faculty of Engineering"
+                                    >
+                                </div>
+
+                                <div class="place-info">
+
+                                    <strong>
+                                        Faculty of Engineering
+                                    </strong>
+
+                                    <span>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        Academic
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-arrow-up-right-from-square place-arrow"></i>
+
+                            </a>
+
+
+                            <a href="map.html" class="place">
+
+                                <div class="place-image">
+                                    <img
+                                        src="/image/library.jpg"
+                                        alt="Science Complex"
+                                    >
+                                </div>
+
+                                <div class="place-info">
+
+                                    <strong>
+                                        Science Complex
+                                    </strong>
+
+                                    <span>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        Academic
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-arrow-up-right-from-square place-arrow"></i>
+
+                            </a>
+
+
+                            <a href="map.html" class="place">
+
+                                <div class="place-image">
+                                    <img
+                                        src="/image/library.jpg"
+                                        alt="Student Center"
+                                    >
+                                </div>
+
+                                <div class="place-info">
+
+                                    <strong>
+                                        Student Center
+                                    </strong>
+
+                                    <span>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        Services
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-arrow-up-right-from-square place-arrow"></i>
+
+                            </a>
+
+
+                            <a href="map.html" class="place">
+
+                                <div class="place-image">
+                                    <img
+                                        src="/image/library.jpg"
+                                        alt="Sports Complex"
+                                    >
+                                </div>
+
+                                <div class="place-info">
+
+                                    <strong>
+                                        Sports Complex
+                                    </strong>
+
+                                    <span>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        Recreation
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-arrow-up-right-from-square place-arrow"></i>
+
+                            </a>
+
+
+                            <a href="map.html" class="place">
+
+                                <div class="place-image">
+                                    <img
+                                        src="/image/library.jpg"
+                                        alt="Administrative Building"
+                                    >
+                                </div>
+
+                                <div class="place-info">
+
+                                    <strong>
+                                        Administrative Building
+                                    </strong>
+
+                                    <span>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        Administrative
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-arrow-up-right-from-square place-arrow"></i>
+
+                            </a>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================= RATINGS ================= -->
+
+                    <section class="card ratings-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="section-label">
+                                    COMMUNITY
+                                </span>
+
+                                <h2>
+                                    Campus Ratings
+                                </h2>
+
+                                <p>
+                                    See what students and visitors think.
+                                </p>
+
+                            </div>
+
+                            <button
+                                class="rating-button"
+                                type="button"
+                            >
+                                <i class="fa-solid fa-star"></i>
+                                Rate a Place
+                            </button>
+
+                        </div>
+
+
+                        <div class="rating-summary">
+
+
+                            <div class="rating-score">
+
+                                <strong>4.6</strong>
+
+                                <div class="stars">
+
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+
+                                </div>
+
+                                <span>
+                                    Based on 128 ratings
+                                </span>
+
+                            </div>
+
+
+                            <div class="rating-breakdown">
+
+                                <div class="rating-row">
+                                    <span>5</span>
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <div class="rating-bar">
+                                        <div
+                                            class="rating-fill"
+                                            style="width:78%"
+                                        ></div>
+                                    </div>
+
+                                    <small>78%</small>
+                                </div>
+
+
+                                <div class="rating-row">
+                                    <span>4</span>
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <div class="rating-bar">
+                                        <div
+                                            class="rating-fill"
+                                            style="width:15%"
+                                        ></div>
+                                    </div>
+
+                                    <small>15%</small>
+                                </div>
+
+
+                                <div class="rating-row">
+                                    <span>3</span>
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <div class="rating-bar">
+                                        <div
+                                            class="rating-fill"
+                                            style="width:5%"
+                                        ></div>
+                                    </div>
+
+                                    <small>5%</small>
+                                </div>
+
+
+                                <div class="rating-row">
+                                    <span>2</span>
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <div class="rating-bar">
+                                        <div
+                                            class="rating-fill"
+                                            style="width:2%"
+                                        ></div>
+                                    </div>
+
+                                    <small>2%</small>
+                                </div>
+
+
+                                <div class="rating-row">
+                                    <span>1</span>
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <div class="rating-bar">
+                                        <div
+                                            class="rating-fill"
+                                            style="width:1%"
+                                        ></div>
+                                    </div>
+
+                                    <small>1%</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="reviews">
+
+                            <div class="review">
+
+                                <div class="review-avatar">
+                                    CN
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Charles Nnaemekaofor
+                                    </strong>
+
+                                    <div class="review-stars">
+                                        ★★★★★
+                                    </div>
+
+                                    <p>
+                                        Easy to find locations around campus.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="review">
+
+                                <div class="review-avatar">
+                                    RN
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Rita Nwabueze Chike
+                                    </strong>
+
+                                    <div class="review-stars">
+                                        ★★★★★
+                                    </div>
+
+                                    <p>
+                                        Very useful for navigating unfamiliar areas.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- ================= RIGHT COLUMN ================= -->
+
+                <aside class="right-column">
+
+
+                    <!-- QUICK ACTIONS -->
+
+                    <section class="card quick-actions-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="section-label">
+                                    SHORTCUTS
+                                </span>
+
+                                <h2>
+                                    Quick Actions
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+                            <a href="map.html" class="quick-action">
+
+                                <div class="quick-icon">
+                                    <i class="fa-regular fa-map"></i>
+                                </div>
+
+                                <span>Map View</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="#" class="quick-action">
+
+                                <div class="quick-icon">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                </div>
+
+                                <span>Faculties</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="#" class="quick-action">
+
+                                <div class="quick-icon">
+                                    <i class="fa-solid fa-sitemap"></i>
+                                </div>
+
+                                <span>Departments</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="map.html" class="quick-action">
+
+                                <div class="quick-icon">
+                                    <i class="fa-solid fa-route"></i>
+                                </div>
+
+                                <span>Directions</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="#" class="quick-action">
+
+                                <div class="quick-icon">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </div>
+
+                                <span>Saved Places</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="#" class="quick-action">
+
+                                <div class="quick-icon">
+                                    <i class="fa-regular fa-circle-question"></i>
+                                </div>
+
+                                <span>Help & Support</span>
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- RECENT ROUTES -->
+
+                    <section class="card routes-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="section-label">
+                                    ACTIVITY
+                                </span>
+
+                                <h2>
+                                    Recent Routes
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="route-list">
+
+                            <div class="route-item">
+
+                                <div class="route-icon">
+                                    <i class="fa-solid fa-route"></i>
+                                </div>
+
+                                <div class="route-details">
+
+                                    <strong>
+                                        Library
+                                    </strong>
+
+                                    <span>
+                                        From Main Gate
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </div>
+
+
+                            <div class="route-item">
+
+                                <div class="route-icon">
+                                    <i class="fa-solid fa-route"></i>
+                                </div>
+
+                                <div class="route-details">
+
+                                    <strong>
+                                        Faculty of Engineering
+                                    </strong>
+
+                                    <span>
+                                        From Student Center
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </div>
+
+
+                            <div class="route-item">
+
+                                <div class="route-icon">
+                                    <i class="fa-solid fa-route"></i>
+                                </div>
+
+                                <div class="route-details">
+
+                                    <strong>
+                                        Science Complex
+                                    </strong>
+
+                                    <span>
+                                        From Main Gate
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- CAMPUS STATUS -->
+
+                    <section class="campus-status">
+
+                        <div class="campus-status-icon">
+
+                            <i class="fa-solid fa-location-crosshairs"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                CAMPUS STATUS
+                            </span>
+
+                            <strong>
+                                Navigation is ready
+                            </strong>
+
+                            <p>
+                                Explore the campus and find your destination.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Leaflet -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+    <script src="/javascript/map.js"></script>
+    <!-- Dashboard JS -->
+    <script src="/javascript/dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Map | COOU Navigation</title>
+
+<!-- Original Leaflet CSS -->
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+>
+
+<!-- Font Awesome -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+
+<!-- Map CSS -->
+<link rel="stylesheet" href="/css/map.css">
+</head>
+
+<body>
+<div class="map-page">
+
+    <!-- TOP NAVIGATION -->
+    <header class="map-header">
+
+        <div class="header-left">
+
+            <a href="dashboard.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
+            <div class="page-brand">
+
+                <div class="brand-logo">
+                    <img src="/image/logo.jpg" alt="COOU Logo">
+                </div>
+
+                <div>
+                    <span class="brand-small">COOU NAVIGATION</span>
+                    <h1>Campus Map</h1>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button class="header-btn" id="locateBtn">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <span>My Location</span>
+            </button>
+
+            <button class="header-btn mobile-search-btn" id="openSearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAP AREA -->
+    <main class="map-main">
+
+        <div class="map-wrapper">
+
+            <!-- REAL LEAFLET MAP -->
+            <div id="campusMap"></div>
+
+
+            <!-- SEARCH PANEL -->
+            <div class="map-search">
+
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <input
+                    type="text"
+                    id="locationSearch"
+                    placeholder="Search campus location..."
+                    autocomplete="off"
+                >
+
+                <button id="clearSearch" class="clear-search">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div id="searchResults" class="search-results"></div>
+
+            </div>
+
+
+            <!-- MAP STATUS -->
+            <div class="map-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>Campus Map</strong>
+                    <small>Live map interface</small>
+                </div>
+
+            </div>
+
+
+            <!-- MAP LEGEND -->
+            <div class="map-legend">
+
+                <div class="legend-title">
+                    <i class="fa-solid fa-layer-group"></i>
+                    Map Legend
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-marker main"></span>
+                    Campus
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-marker building"></span>
+                    Buildings
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-marker facility"></span>
+                    Facilities
+                </div>
+
+            </div>
+
+
+            <!-- FLOATING MAP ACTIONS -->
+            <div class="map-actions">
+
+                <button
+                    class="map-action"
+                    id="resetMap"
+                    title="Reset map"
+                >
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+
+                <button
+                    class="map-action"
+                    id="zoomCampus"
+                    title="Campus view"
+                >
+                    <i class="fa-solid fa-school"></i>
+                </button>
+
+            </div>
+
+
+            <!-- OVERVIEW CARD -->
+            <div class="overview-card">
+
+                <div class="overview-top">
+
+                    <div class="overview-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <span>EXPLORE</span>
+                        <h2>COOU Uli Campus</h2>
+                    </div>
+
+                </div>
+
+                <p>
+                    Find faculties, classrooms, facilities and important
+                    locations around the campus.
+                </p>
+
+                <div class="overview-stats">
+
+                    <div>
+                        <strong id="locationCount">06</strong>
+                        <span>Locations</span>
+                    </div>
+
+                    <div>
+                        <strong>4.6</strong>
+                        <span>Campus Rating</span>
+                    </div>
+
+                    <div>
+                        <strong>GPS</strong>
+                        <span>Navigation</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SELECTED LOCATION CARD -->
+            <div class="selected-location" id="selectedLocation">
+
+                <button
+                    class="close-location"
+                    id="closeLocation"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="selected-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div class="selected-content">
+
+                    <span>SELECTED LOCATION</span>
+
+                    <h3 id="selectedTitle">
+                        COOU Uli Campus
+                    </h3>
+
+                    <p id="selectedDescription">
+                        Chukwuemeka Odumegwu Ojukwu University,
+                        Uli Campus.
+                    </p>
+
+                    <button
+                        class="direction-btn"
+                        id="directionBtn"
+                    >
+                        <i class="fa-solid fa-diamond-turn-right"></i>
+                        Get Directions
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT INFORMATION PANEL -->
+        <aside class="map-sidebar">
+
+            <!-- QUICK NAVIGATION -->
+            <section class="sidebar-card quick-navigation">
+
+                <div class="card-heading">
+
+                    <div>
+                        <span>QUICK NAVIGATION</span>
+                        <h2>Popular Places</h2>
+                    </div>
+
+                    <i class="fa-solid fa-compass"></i>
+
+                </div>
+
+
+                <div class="place-list">
+
+                    <button
+                        class="place-item"
+                        data-location="Library"
+                    >
+
+                        <div class="place-icon library">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+
+                        <div class="place-info">
+                            <strong>Library</strong>
+                            <span>Academic resource centre</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <button
+                        class="place-item"
+                        data-location="Faculty of Engineering"
+                    >
+
+                        <div class="place-icon engineering">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+
+                        <div class="place-info">
+                            <strong>Faculty of Engineering</strong>
+                            <span>Engineering complex</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <button
+                        class="place-item"
+                        data-location="Science Complex"
+                    >
+
+                        <div class="place-icon science">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+
+                        <div class="place-info">
+                            <strong>Science Complex</strong>
+                            <span>Science faculties</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <button
+                        class="place-item"
+                        data-location="Student Center"
+                    >
+
+                        <div class="place-icon student">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <div class="place-info">
+                            <strong>Student Center</strong>
+                            <span>Student activities</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <button
+                        class="place-item"
+                        data-location="Sports Complex"
+                    >
+
+                        <div class="place-icon sports">
+                            <i class="fa-solid fa-futbol"></i>
+                        </div>
+
+                        <div class="place-info">
+                            <strong>Sports Complex</strong>
+                            <span>Sports and recreation</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+
+                    <button
+                        class="place-item"
+                        data-location="Administrative Building"
+                    >
+
+                        <div class="place-icon admin">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+
+                        <div class="place-info">
+                            <strong>Administrative Building</strong>
+                            <span>University administration</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- NAVIGATION TIP -->
+            <section class="sidebar-card navigation-tip">
+
+                <div class="tip-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+
+                <div>
+
+                    <span>NAVIGATION TIP</span>
+
+                    <h3>
+                        Lost on campus?
+                    </h3>
+
+                    <p>
+                        Search for any location above and let the
+                        campus map guide you.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAP INFO -->
+            <section class="sidebar-card map-information">
+
+                <div class="card-heading">
+
+                    <div>
+                        <span>MAP INFORMATION</span>
+                        <h2>Navigation Tools</h2>
+                    </div>
+
+                    <i class="fa-solid fa-map"></i>
+
+                </div>
+
+
+                <div class="tool-grid">
+
+                    <button id="sidebarLocate">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        <span>Locate Me</span>
+                    </button>
+
+                    <button id="sidebarReset">
+                        <i class="fa-solid fa-rotate"></i>
+                        <span>Reset Map</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+</div>
+<!-- Original Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Map JavaScript -->
+<script src="/javascript/map.js"></script>
+</body>
+</html>

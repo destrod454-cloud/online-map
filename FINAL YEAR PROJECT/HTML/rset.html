@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Forgot Password | COOU Campus Navigation</title>
+
+    <link rel="stylesheet" href="/css/rset.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <main class="forgot-page">
+
+        <!-- BRANDING PANEL -->
+        <section class="brand-panel">
+
+            <div class="brand-content">
+
+                <img
+                    src="/image/logo.jpg"
+                    alt="COOU Logo"
+                    class="school-logo"
+                >
+
+                <span class="university-name">
+                    CHUKWUEMEKA ODUMEGWU OJUKWU UNIVERSITY
+                </span>
+
+                <h1>
+                    Campus<br>
+                    Navigation
+                </h1>
+
+                <p>
+                    Find your way around COOU Uli Campus
+                    with ease.
+                </p>
+
+                <div class="secure-badge">
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <div>
+                        <strong>Secure Access</strong>
+                        <span>Your account is protected</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORGOT PASSWORD -->
+        <section class="forgot-section">
+
+            <div class="forgot-card">
+
+                <a href="login.html" class="back-link">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Login
+                </a>
+
+
+                <!-- EMAIL STEP -->
+                <div class="form-step active" id="emailStep">
+
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+
+                    <h2>Forgot Password?</h2>
+
+                    <p class="description">
+                        Enter the email address connected to your
+                        account and we'll send you a verification
+                        code to reset your password.
+                    </p>
+
+
+                    <form id="emailForm">
+
+                        <div class="input-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email address"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="continue-btn"
+                        >
+                            Send Verification Code
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </form>
+
+
+                    <div class="help-text">
+                        Remember your password?
+                        <a href="login.html">Login</a>
+                    </div>
+
+                </div>
+
+
+                <!-- VERIFICATION STEP -->
+                <div class="form-step" id="verificationStep">
+
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-envelope-circle-check"></i>
+                    </div>
+
+                    <h2>Check Your Email</h2>
+
+                    <p class="description">
+                        We've sent a 6-digit verification code to
+                        <strong id="emailDisplay">
+                            your email
+                        </strong>.
+                    </p>
+
+
+                    <form id="verificationForm">
+
+                        <div class="input-group">
+
+                            <label for="verificationCode">
+                                Verification Code
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-shield-halved"></i>
+
+                                <input
+                                    type="text"
+                                    id="verificationCode"
+                                    placeholder="Enter 6-digit code"
+                                    maxlength="6"
+                                    inputmode="numeric"
+                                    autocomplete="one-time-code"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="continue-btn"
+                        >
+                            Verify Code
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+
+                    </form>
+
+
+                    <div class="resend-area">
+
+                        <span>Didn't receive the code?</span>
+
+                        <button
+                            type="button"
+                            id="resendCode"
+                        >
+                            Resend Code
+                        </button>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="change-email"
+                        id="changeEmail"
+                    >
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Change email address
+                    </button>
+
+                </div>
+
+
+                <!-- NEW PASSWORD STEP -->
+                <div class="form-step" id="passwordStep">
+
+                    <div class="icon-wrapper success-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <h2>Create New Password</h2>
+
+                    <p class="description">
+                        Your email has been verified. Create a
+                        new password for your account.
+                    </p>
+
+
+                    <form id="passwordForm">
+
+                        <div class="input-group">
+
+                            <label for="newPassword">
+                                New Password
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input
+                                    type="password"
+                                    id="newPassword"
+                                    placeholder="Enter new password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="toggleNewPassword"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="confirmPassword">
+                                Confirm Password
+                            </label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    placeholder="Confirm new password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="toggleConfirmPassword"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="continue-btn"
+                        >
+                            Reset Password
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- SUCCESS STEP -->
+                <div class="form-step" id="successStep">
+
+                    <div class="icon-wrapper success-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <h2>Password Reset!</h2>
+
+                    <p class="description">
+                        Your password has been successfully
+                        updated. You can now login with your
+                        new password.
+                    </p>
+
+
+                    <div class="success-message">
+
+                        <i class="fa-solid fa-shield-check"></i>
+
+                        <span>
+                            Your account is now secured with your
+                            new password.
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="/HTML/index.html"
+                        class="login-btn"
+                    >
+                        Continue to Login
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="footer-text">
+
+                    <strong>
+                        COOU Campus Navigation System
+                    </strong>
+
+                    <span>
+                        Navigate your campus with ease.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+    <script src="/javascript/rset.js"></script>
+
+</body>
+
+</html>
